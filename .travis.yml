@@ -1,10 +1,15 @@
 language: ruby
 rvm:
 - 2.5
-
 before_script:
-  - psql -c 'create database redkban_test;' -U postgres
-
+- psql -c 'create database redkban_test;' -U postgres
 script:
-  - bin/rake spec
-  - bin/rake features
+- bin/rake spec
+- bin/rake features
+deploy:
+  provider: heroku
+  api_key:
+    secure: pohgDZ1A+4wct/8ePIc+ASve4iM0GH/ydplHMk3C+ca/+TUgpDVnYN8GC3gld9I/h/HRe/4l5lGk0Q6m7RDINT3ABSerlFHQmF9+2SC/7yVsIkZ1MtTEUfQG6UVmvN5Ax02AgAOVlKCDavS7OQnmpvZk72hJJ1n9Qf7XNs7wPkPC0NWZrEVkE/NWIGLCT5nAR/8yXkuvz16lZGTCIBSHm1tfNz5XdwKyPyWsWQpm6Cc9GjmDCdVSP8pG9VmQZiD/eYgLzWxTdzQ/cVRrKLl82SgQtphU8DUFqfV9enbrjmT+yKWmlfptJVkG0zlTNnR/TbHraNpV2zBOp9DLpPmMjnyPxEnKSFrect1pLcPEvzjhv5fAzf/kyl7ABHZfLa60B4PEEdgFXZwAMkmsa5FBofoujJVdhBFepxJ//Eyw45D9WdJPrXsd7ZxBo4/8PZXkc52Ab+euZZr7QVDRF2pq4oj+49qw6E8Zdk1Cs9WTWpUypE+HBUVr6qdGLCgwCC/7i7quVXqdxYrJ6+ZIV3FYV+Tv6C2IURbklk4ei7wqWH/9KzUnuJJbMVXst/lCfHhDXvW83jKEhWISlMgqPuUizZqEObA6vNWz6NQKZvhQSkWWkaNIdr3iS4lcHHBZAED08EWEZF7T96XjPHG8LXn34in6jzBtBhspCN1fzr+Y9BA=
+  app: aqueous-mesa-24792
+  on:
+    repo: damorais/redkban
